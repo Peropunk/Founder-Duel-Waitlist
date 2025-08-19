@@ -1,16 +1,43 @@
 'use client'
 
 import { useState } from 'react'
+import { supabase } from '../lib/supabase'
 
 export default function FounderDuelWaitlist() {
   const [email, setEmail] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle waitlist signup
-    setIsSubmitted(true)
-    setEmail('')
+    setIsLoading(true)
+    setError('')
+
+    try {
+      const { data, error } = await supabase
+        .from('waitlist')
+        .insert([{ email }])
+        .select()
+
+      if (error) {
+        if (error.code === '23505') {
+          setError('Email already registered!')
+        } else {
+          setError('Something went wrong. Please try again.')
+        }
+        console.error('Error:', error)
+      } else {
+        setIsSubmitted(true)
+        setEmail('')
+        console.log('Success:', data)
+      }
+    } catch (err) {
+      setError('Network error. Please try again.')
+      console.error('Network error:', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (

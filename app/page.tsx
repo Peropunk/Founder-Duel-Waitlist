@@ -138,7 +138,7 @@ export default function FounderDuelWaitlist() {
 
       {/* Footer */}
       <footer className="footer">
-        <p>&copy; 2024 Founder Duel. All rights reserved.</p>
+        <p>&copy; 2025 Founder Duel. All rights reserved.</p>
       </footer>
     </main>
   )

@@ -146,6 +146,11 @@ export default function FounderDuelWaitlist() {
 
           {!isSubmitted ? (
             <form onSubmit={handleSubmit} className="waitlist-form">
+              {error && (
+                <div className="error-message">
+                  <p>{error}</p>
+                </div>
+              )}
               <div className="input-group">
                 <input
                   type="email"
@@ -154,9 +159,10 @@ export default function FounderDuelWaitlist() {
                   placeholder="Enter your email to join the waitlist"
                   className="email-input"
                   required
+                  disabled={isLoading}
                 />
-                <button type="submit" className="submit-btn">
-                  Enter Arena
+                <button type="submit" className="submit-btn" disabled={isLoading}>
+                  {isLoading ? 'Joining...' : 'Enter Arena'}
                 </button>
               </div>
             </form>

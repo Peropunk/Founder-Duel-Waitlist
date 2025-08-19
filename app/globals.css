@@ -639,6 +639,44 @@ body {
   50% { box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.3); }
 }
 
+.error-message {
+  background: linear-gradient(145deg, rgba(255, 0, 0, 0.1), rgba(200, 0, 0, 0.1));
+  border: 2px solid #d32f2f;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  animation: errorShake 0.5s ease-in-out;
+}
+
+.error-message p {
+  color: #d32f2f;
+  font-size: 0.8rem;
+  margin: 0;
+  text-shadow: none;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.submit-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3) !important;
+}
+
+.email-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .success-message {
   background: linear-gradient(145deg, rgba(0, 128, 0, 0.2), rgba(0, 100, 0, 0.2));
   border: 2px solid #008000;

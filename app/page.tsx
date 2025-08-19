@@ -142,6 +142,23 @@ export default function FounderDuelWaitlist() {
         </div>
       </section>
 
+      {/* Spotify Section */}
+      <section className="spotify-section">
+        <div className="spotify-container">
+          <iframe
+            data-testid="embed-iframe"
+            style={{borderRadius: '12px'}}
+            src="https://open.spotify.com/embed/track/5gB2IrxOCX2j9bMnHKP38i?utm_source=generator"
+            width="70%"
+            height="152"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <p>&copy; 2025 Founder Duel. All rights reserved.</p>

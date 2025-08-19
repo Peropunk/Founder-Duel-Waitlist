@@ -663,6 +663,63 @@ body {
   font-size: 0.9rem;
 }
 
+/* Spotify Section */
+.spotify-section {
+  padding: 3rem 2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 140, 0, 0.06) 100%),
+    repeating-linear-gradient(
+      135deg,
+      transparent,
+      transparent 20px,
+      rgba(255, 140, 0, 0.02) 20px,
+      rgba(255, 140, 0, 0.02) 40px
+    );
+  position: relative;
+  text-align: center;
+}
+
+.spotify-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 15% 25%, rgba(255, 140, 0, 0.08) 2px, transparent 2px),
+    radial-gradient(circle at 85% 75%, rgba(255, 215, 0, 0.06) 1px, transparent 1px);
+  background-size: 80px 80px, 60px 60px;
+  pointer-events: none;
+}
+
+.spotify-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.spotify-container iframe {
+  box-shadow:
+    0 8px 32px rgba(255, 140, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: spotifyFloat 4s ease-in-out infinite;
+}
+
+.spotify-container iframe:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+    0 15px 45px rgba(255, 140, 0, 0.3),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes spotifyFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
 /* Footer */
 .footer {
   padding: 2rem;

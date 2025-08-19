@@ -38,6 +38,9 @@ export default function FounderDuelWaitlist() {
         <div className="battle-arena">
           <div className="startup-card startup-left">
             <div className="company-info">
+              <div className="company-logo-placeholder">
+                <div className="logo-icon">🚀</div>
+              </div>
               <h3 className="company-name">TechFlow</h3>
               <p className="company-stage">Series A</p>
             </div>
@@ -75,6 +78,9 @@ export default function FounderDuelWaitlist() {
 
           <div className="startup-card startup-right">
             <div className="company-info">
+              <div className="company-logo-placeholder">
+                <div className="logo-icon">⚡</div>
+              </div>
               <h3 className="company-name">GrowthLab</h3>
               <p className="company-stage">Seed</p>
             </div>

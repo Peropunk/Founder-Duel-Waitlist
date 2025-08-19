@@ -292,9 +292,9 @@ body {
 
 .company-name {
   font-size: 1.5rem;
-  color: #1565c0;
+  color: #ffffff;
   margin-bottom: 0.5rem;
-  text-shadow: 1px 1px 0px rgba(21, 101, 192, 0.2);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 1px 1px 0px rgba(255, 140, 0, 0.3);
 }
 
 .company-stage {

@@ -14,15 +14,21 @@ body {
 
 body {
   font-family: 'Press Start 2P', monospace;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
-  color: #fff;
+  background: #ffffff;
+  color: #333;
   line-height: 1.6;
 }
 
 /* Waitlist Page Styles */
 .waitlist-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 100%);
+  background: #ffffff;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 140, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 69, 0, 0.1) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 49%, rgba(255, 140, 0, 0.02) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(255, 69, 0, 0.02) 50%, transparent 51%);
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
 }
 
 /* Hero Section */

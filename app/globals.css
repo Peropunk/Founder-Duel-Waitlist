@@ -29,6 +29,8 @@ body {
     linear-gradient(45deg, transparent 49%, rgba(255, 140, 0, 0.02) 50%, transparent 51%),
     linear-gradient(-45deg, transparent 49%, rgba(255, 69, 0, 0.02) 50%, transparent 51%);
   background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+  perspective: 1000px;
+  overflow-x: hidden;
 }
 
 /* Hero Section */
@@ -76,6 +78,25 @@ body {
   height: auto;
   image-rendering: pixelated;
   filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.5));
+  animation: logoFloat 4s ease-in-out infinite, logoGlow 2s ease-in-out infinite alternate;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.main-logo:hover {
+  transform: rotateY(15deg) rotateX(10deg) scale(1.05);
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px) rotateY(0deg); }
+  25% { transform: translateY(-10px) rotateY(5deg); }
+  50% { transform: translateY(-5px) rotateY(0deg); }
+  75% { transform: translateY(-15px) rotateY(-5deg); }
+}
+
+@keyframes logoGlow {
+  from { filter: drop-shadow(0 0 20px rgba(255, 140, 0, 0.5)); }
+  to { filter: drop-shadow(0 0 30px rgba(255, 140, 0, 0.8)); }
 }
 
 .taglines {
@@ -89,6 +110,13 @@ body {
   text-shadow: 2px 2px 0px rgba(255, 140, 0, 0.3), 1px 1px 0px #fff;
   line-height: 1.4;
   position: relative;
+  animation: textBounce 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes textBounce {
+  0%, 100% { transform: translateY(0) rotateX(0deg); }
+  50% { transform: translateY(-5px) rotateX(2deg); }
 }
 
 .sub-tagline {
@@ -96,6 +124,13 @@ body {
   color: #ff6d00;
   text-shadow: 1px 1px 0px rgba(255, 215, 0, 0.5), 1px 1px 0px #fff;
   line-height: 1.5;
+  animation: textFloat 2.5s ease-in-out infinite 0.5s;
+  transform-style: preserve-3d;
+}
+
+@keyframes textFloat {
+  0%, 100% { transform: translateY(0) rotateY(0deg); }
+  50% { transform: translateY(-3px) rotateY(1deg); }
 }
 
 /* Battle Section */
@@ -134,6 +169,8 @@ body {
   grid-template-columns: 1fr auto 1fr;
   gap: 2rem;
   align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .startup-card {
@@ -155,7 +192,45 @@ body {
     0 8px 32px rgba(255, 140, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     0 1px 3px rgba(0, 0, 0, 0.1);
-  animation: cardPulse 2s ease-in-out infinite;
+  animation: cardFloat 3s ease-in-out infinite;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.startup-card:hover {
+  transform: rotateY(10deg) rotateX(5deg) translateY(-20px) scale(1.05);
+  box-shadow:
+    0 25px 50px rgba(255, 140, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.startup-left {
+  animation-delay: 0s;
+}
+
+.startup-left:hover {
+  transform: rotateY(-10deg) rotateX(5deg) translateY(-20px) scale(1.05);
+}
+
+.startup-right {
+  animation-delay: 1.5s;
+}
+
+@keyframes cardFloat {
+  0%, 100% { 
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  25% { 
+    transform: translateY(-8px) rotateZ(1deg);
+  }
+  50% { 
+    transform: translateY(-4px) rotateZ(0deg);
+  }
+  75% { 
+    transform: translateY(-12px) rotateZ(-1deg);
+  }
 }
 
 .startup-card::before {
@@ -169,19 +244,12 @@ body {
   border-radius: 15px;
   z-index: -1;
   filter: blur(1px);
+  transition: all 0.3s ease;
 }
 
-@keyframes cardPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
-}
-
-.startup-left {
-  animation-delay: 0s;
-}
-
-.startup-right {
-  animation-delay: 1s;
+.startup-card:hover::before {
+  filter: blur(2px);
+  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff8c00, #ffd700);
 }
 
 .company-info {
@@ -214,6 +282,7 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   margin-bottom: 1.5rem;
+  perspective: 500px;
 }
 
 .stat {
@@ -228,6 +297,26 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     0 2px 4px rgba(255, 140, 0, 0.1);
   position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: statPop 2s ease-in-out infinite;
+}
+
+.stat:hover {
+  transform: rotateX(10deg) rotateY(5deg) translateZ(10px) scale(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 8px 16px rgba(255, 140, 0, 0.3);
+}
+
+.stat:nth-child(1) { animation-delay: 0s; }
+.stat:nth-child(2) { animation-delay: 0.2s; }
+.stat:nth-child(3) { animation-delay: 0.4s; }
+.stat:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes statPop {
+  0%, 100% { transform: translateZ(0px) scale(1); }
+  50% { transform: translateZ(5px) scale(1.02); }
 }
 
 .stat::before {
@@ -284,12 +373,36 @@ body {
   background: linear-gradient(90deg, #ff0000, #ff8c00, #ffd700);
   border-radius: 6px;
   transition: width 0.5s ease;
-  animation: healthGlow 1.5s ease-in-out infinite;
+  animation: healthPulse 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
 }
 
-@keyframes healthGlow {
-  0%, 100% { box-shadow: 0 0 5px rgba(255, 140, 0, 0.5); }
-  50% { box-shadow: 0 0 15px rgba(255, 140, 0, 0.8); }
+.health-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: healthShine 3s ease-in-out infinite;
+}
+
+@keyframes healthPulse {
+  0%, 100% { 
+    box-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+    transform: scaleY(1);
+  }
+  50% { 
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.8), 0 0 25px rgba(255, 140, 0, 0.4);
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes healthShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
 }
 
 /* VS Section */
@@ -302,13 +415,33 @@ body {
   width: 80px;
   height: auto;
   image-rendering: pixelated;
-  animation: swordSpin 3s linear infinite;
+  animation: swordDance 4s ease-in-out infinite;
   filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.7));
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
 }
 
-@keyframes swordSpin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.battle-sword:hover {
+  animation-play-state: paused;
+  transform: rotateY(180deg) rotateX(20deg) scale(1.2);
+}
+
+@keyframes swordDance {
+  0% { 
+    transform: rotate(0deg) translateY(0px) rotateX(0deg); 
+  }
+  25% { 
+    transform: rotate(90deg) translateY(-10px) rotateX(10deg); 
+  }
+  50% { 
+    transform: rotate(180deg) translateY(0px) rotateX(0deg); 
+  }
+  75% { 
+    transform: rotate(270deg) translateY(-5px) rotateX(-10deg); 
+  }
+  100% { 
+    transform: rotate(360deg) translateY(0px) rotateX(0deg); 
+  }
 }
 
 .vs-text {
@@ -320,6 +453,19 @@ body {
   color: #ff0000;
   text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(255, 140, 0, 0.5);
   z-index: 2;
+  animation: vsGlow 2s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+@keyframes vsGlow {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1) rotateZ(0deg);
+    text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(255, 140, 0, 0.5);
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1) rotateZ(2deg);
+    text-shadow: 3px 3px 0px #000, 6px 6px 0px rgba(255, 140, 0, 0.8), 0 0 20px #ff0000;
+  }
 }
 
 /* Waitlist Section */
@@ -421,19 +567,43 @@ body {
   border-radius: 10px;
   color: #fff;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-shadow: 1px 1px 0px #000;
   box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+  animation: buttonPulse 3s ease-in-out infinite;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
 }
 
 .submit-btn:hover {
   background: linear-gradient(145deg, #ffd700, #ff8c00);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.5);
+  transform: translateY(-8px) rotateX(10deg) scale(1.05);
+  box-shadow: 0 15px 35px rgba(255, 140, 0, 0.6);
+}
+
+.submit-btn:hover::before {
+  left: 100%;
 }
 
 .submit-btn:active {
-  transform: translateY(0);
+  transform: translateY(-4px) rotateX(5deg) scale(1.02);
+}
+
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3); }
+  50% { box-shadow: 0 4px 15px rgba(255, 140, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.3); }
 }
 
 .success-message {

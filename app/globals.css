@@ -257,6 +257,39 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.company-logo-placeholder {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem auto;
+  background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+  border: 2px solid rgba(21, 101, 192, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(21, 101, 192, 0.1);
+  transition: all 0.3s ease;
+}
+
+.company-logo-placeholder:hover {
+  transform: scale(1.1) rotateY(10deg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 4px 8px rgba(21, 101, 192, 0.2);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
 .company-name {
   font-size: 1.5rem;
   color: #1565c0;

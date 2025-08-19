@@ -35,7 +35,30 @@ body {
 .hero-section {
   padding: 4rem 2rem;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(255, 140, 0, 0.1) 0%, transparent 70%);
+  background:
+    radial-gradient(circle at center, rgba(255, 140, 0, 0.15) 0%, transparent 70%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 140, 0, 0.03) 2px,
+      rgba(255, 140, 0, 0.03) 4px
+    );
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255, 69, 0, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+  pointer-events: none;
 }
 
 .hero-content {
@@ -61,23 +84,47 @@ body {
 
 .main-tagline {
   font-size: clamp(1rem, 3vw, 2rem);
-  color: #ff8c00;
+  color: #e65100;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(255, 0, 0, 0.3);
+  text-shadow: 2px 2px 0px rgba(255, 140, 0, 0.3), 1px 1px 0px #fff;
   line-height: 1.4;
+  position: relative;
 }
 
 .sub-tagline {
   font-size: clamp(0.7rem, 2vw, 1.2rem);
-  color: #ffd700;
-  text-shadow: 1px 1px 0px #000, 2px 2px 0px rgba(255, 140, 0, 0.3);
+  color: #ff6d00;
+  text-shadow: 1px 1px 0px rgba(255, 215, 0, 0.5), 1px 1px 0px #fff;
   line-height: 1.5;
 }
 
 /* Battle Section */
 .battle-section {
   padding: 4rem 2rem;
-  background: linear-gradient(180deg, transparent 0%, rgba(139, 0, 0, 0.1) 100%);
+  background:
+    linear-gradient(180deg, transparent 0%, rgba(255, 140, 0, 0.05) 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 69, 0, 0.02) 10px,
+      rgba(255, 69, 0, 0.02) 20px
+    );
+  position: relative;
+}
+
+.battle-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 30% 40%, rgba(255, 140, 0, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(255, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px, 60px 60px;
+  pointer-events: none;
 }
 
 .battle-arena {
